@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import ModalTextField from './ModalTextField';
 
 interface AIBotModalProps {
   isOpen: boolean;
@@ -31,10 +33,10 @@ export default function AIBotModal({ isOpen, onClose }: AIBotModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#174A5F]/25">
       <div
         ref={modalRef}
-        className="relative w-[800px] h-[600px] bg-white rounded shadow-lg"
+        className="relative w-[600px] h-[500px] bg-white rounded shadow-lg flex flex-col items-center justify-center"
       >
         {/* Close button */}
         <button
@@ -44,9 +46,31 @@ export default function AIBotModal({ isOpen, onClose }: AIBotModalProps) {
           ✕
         </button>
 
-        {/* Modal content (empty for now) */}
-        <div className="w-full h-full flex items-center justify-center">
-          {/* AI Bot content will go here */}
+        {/* Modal content */}
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          {/* Bot Image */}
+          <Image
+            src="/botmodalimage.svg"
+            alt="AI Bot Modal Image"
+            width={200}
+            height={200}
+          />
+
+          {/* Greeting Text */}
+          <p
+            className="mt-4 text-[#174A5F] text-center"
+            style={{ fontFamily: 'Roboto', fontWeight: 300, fontSize: '40px' }}
+          >
+            Hi! How Can I Help You?
+          </p>
+
+          {/* Mic Icon */}
+          <div className="mt-6">
+            <Image src="/micicon.svg" alt="Mic Icon" width={50} height={50} />
+          </div>
+
+          {/* Text Field */}
+          <ModalTextField />
         </div>
       </div>
     </div>
