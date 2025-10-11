@@ -6,12 +6,12 @@ import Image from 'next/image';
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSwitchToSignUp: () => void; // ✅ new prop
 }
 
-export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
+export default function LoginModal({ isOpen, onClose, onSwitchToSignUp }: LoginModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Close modal when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
@@ -31,15 +31,18 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/25">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ backgroundColor: 'rgba(23, 74, 95, 0.25)' }}
+    >
       <div
         ref={modalRef}
-        className="relative w-[500px] max-w-[90%] bg-white rounded-lg shadow-lg p-8 flex flex-col items-center"
+        className="relative w-[480px] max-w-[90%] bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-xl font-bold"
+          className="absolute top-8 right-8 text-gray-600 text-lg font-bold"
         >
           ✕
         </button>
@@ -48,26 +51,26 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         <div className="mt-10 flex flex-col items-center w-full">
           <h2
             className="text-center text-[#525252]"
-            style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: '26px' }}
+            style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: '24px' }}
           >
             Login to Your Account
           </h2>
           <p
             className="mt-2 text-center text-[#525252]"
-            style={{ fontFamily: 'Poppins', fontWeight: 300, fontSize: '15px' }}
+            style={{ fontFamily: 'Poppins', fontWeight: 300, fontSize: '14px' }}
           >
             Learn more and do more
           </p>
         </div>
 
         {/* Form Fields */}
-        <div className="w-full mt-6 flex flex-col gap-6">
+        <div className="w-full mt-5 flex flex-col gap-4">
           {/* Email/Phone Field */}
           <div className="flex flex-col">
             <label
               htmlFor="login-input"
               className="mb-1 text-[#828282]"
-              style={{ fontFamily: 'Poppins', fontWeight: 500 }}
+              style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: '14px' }}
             >
               Email or phone number
             </label>
@@ -80,7 +83,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 border border-[#DED2D9]
                 rounded-[6px] 
                 px-3 py-2 
-                text-[#000000] 
+                text-sm text-[#000000] 
                 placeholder-[#E0E0E0]
                 font-['Nunito_Sans'] font-normal
                 focus:outline-none focus:ring-1 focus:ring-[#DED2D9]
@@ -94,7 +97,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             <label
               htmlFor="pass-input"
               className="mb-1 text-[#828282]"
-              style={{ fontFamily: 'Poppins', fontWeight: 500 }}
+              style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: '14px' }}
             >
               Password
             </label>
@@ -107,7 +110,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 border border-[#DED2D9]
                 rounded-[6px] 
                 px-3 py-2 
-                text-[#000000] 
+                text-sm text-[#000000] 
                 placeholder-[#E0E0E0]
                 font-['Nunito_Sans'] font-normal
                 focus:outline-none focus:ring-1 focus:ring-[#DED2D9]
@@ -117,32 +120,40 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           </div>
 
           {/* Remember Me & Forgot Password */}
-          <div className="flex items-center justify-between mt-2 w-full">
+          <div className="flex items-center justify-between w-full mt-1">
             <div className="flex items-center">
               <input
                 id="remember"
                 type="checkbox"
-                className="w-4 h-4 border border-[#DED2D9] rounded mr-2"
+                className="w-3 h-3 border border-[#DED2D9] rounded mr-2"
               />
               <label
                 htmlFor="remember"
                 className="text-[#A1A1A1]"
-                style={{ fontFamily: 'Poppins', fontWeight: 400 }}
+                style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: '12px' }}
               >
                 Remember Me
               </label>
             </div>
             <button
               type="button"
-              className="text-[#0C6AA0]"
+              className="text-[#0C6AA0] text-sm"
               style={{ fontFamily: 'Poppins', fontWeight: 500 }}
             >
               Forgot Password?
             </button>
           </div>
 
+          {/* Login Button */}
+          <button
+            type="button"
+            className="w-full h-11 rounded-[6px] bg-[#174A5F] text-white text-sm font-['Poppins'] font-semibold"
+          >
+            Login
+          </button>
+
           {/* Divider with "Or Sign in with" */}
-          <div className="flex items-center w-full justify-center my-4 text-center">
+          <div className="flex items-center w-full justify-center my-2 text-center text-xs">
             <span className="text-[#DDDDDD] font-['Nunito_Sans'] font-semibold">
               ------------- 
             </span>
@@ -155,27 +166,25 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           </div>
 
           {/* Social Media Icons */}
-          <div className="flex justify-center mt-4">
-            <Image
-              src="/Social media icons.svg"
-              alt="Social Media Icons"
-              width={400}  
-              height={240}  
-            />
+          <div className="flex justify-center mt-1 w-full">
+            <div className="flex items-center justify-center border border-[#DED2D9] rounded-[6px] h-10 w-full px-3 bg-white space-x-2">
+              <Image src="/google.svg" alt="Google" width={24} height={24} />
+              <Image src="/apple.svg" alt="Apple" width={24} height={24} />
+              <Image src="/git-hub-logo.svg" alt="GitHub" width={24} height={24} />
+              <Image src="/facebook.svg" alt="Facebook" width={24} height={24} />
+            </div>
           </div>
 
-          {/* Footer: Not Registered Yet? / Create an account */}
-          <div className="flex justify-center items-center mt-6 gap-2">
-            <span
-              className="text-[#828282]"
-              style={{ fontFamily: 'Poppins', fontWeight: 400 }}
-            >
+          {/* Footer: Switch to Sign Up */}
+          <div className="flex justify-center items-center mt-12 gap-2 text-sm">
+            <span className="text-[#828282]" style={{ fontFamily: 'Poppins', fontWeight: 400 }}>
               Not Registered Yet?
             </span>
             <button
               type="button"
               className="text-[#174A5F]"
               style={{ fontFamily: 'Poppins', fontWeight: 500 }}
+              onClick={onSwitchToSignUp} // ✅ hook to switch modal
             >
               Create an account
             </button>

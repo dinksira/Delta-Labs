@@ -5,11 +5,23 @@ import LanguageDropdown from './LanguageDropdown';
 import LoginButton from './LoginButton';
 import SignupButton from './SignupButton';
 import AIBotModal from './AIBotModal';
-import LoginModal from './LoginModal'; // import the new login modal
+import LoginModal from './LoginModal';
+import SignUpModal from './SignUpModal'; // ✅ import the new signup modal
 
 export default function TopBar() {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // state for login modal
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false); // ✅ state for signup modal
+
+  const handleOpenLogin = () => {
+    setIsSignUpModalOpen(false);
+    setIsLoginModalOpen(true);
+  };
+
+  const handleOpenSignUp = () => {
+    setIsLoginModalOpen(false);
+    setIsSignUpModalOpen(true);
+  };
 
   return (
     <>
@@ -39,14 +51,16 @@ export default function TopBar() {
             onClick={() => setIsAIModalOpen(true)}
           />
           {/* Login Button */}
-          <LoginButton onClick={() => setIsLoginModalOpen(true)} />
-          <SignupButton />
+          <LoginButton onClick={handleOpenLogin} />
+          {/* Signup Button */}
+          <SignupButton onClick={handleOpenSignUp} />
         </div>
       </header>
 
       {/* Modals */}
       <AIBotModal isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} />
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
+      <SignUpModal isOpen={isSignUpModalOpen} onClose={() => setIsSignUpModalOpen(false)} />
     </>
   );
 }

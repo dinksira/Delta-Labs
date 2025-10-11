@@ -1,9 +1,14 @@
 // src/components/Landing_page/SignupButton.tsx
 'use client';
 
-export default function SignupButton() {
+interface SignupButtonProps {
+  onClick?: () => void;
+}
+
+export default function SignupButton({ onClick }: SignupButtonProps) {
   return (
     <button
+      onClick={onClick}
       className="
         w-[129px] h-[47px]
         border border-white
