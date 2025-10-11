@@ -4,10 +4,12 @@ import Image from 'next/image';
 import LanguageDropdown from './LanguageDropdown';
 import LoginButton from './LoginButton';
 import SignupButton from './SignupButton';
-import AIBotModal from './AIBotModal'; // import the modal component
+import AIBotModal from './AIBotModal';
+import LoginModal from './LoginModal'; // import the new login modal
 
 export default function TopBar() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // state for login modal
 
   return (
     <>
@@ -34,15 +36,17 @@ export default function TopBar() {
             width={32}
             height={32}
             className="cursor-pointer"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsAIModalOpen(true)}
           />
-          <LoginButton />
+          {/* Login Button */}
+          <LoginButton onClick={() => setIsLoginModalOpen(true)} />
           <SignupButton />
         </div>
       </header>
 
-      {/* AI Bot Modal */}
-      <AIBotModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {/* Modals */}
+      <AIBotModal isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} />
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
     </>
   );
 }
