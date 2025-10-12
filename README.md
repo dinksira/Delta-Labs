@@ -1,5 +1,4 @@
-Nice ✅ — having a good **README** makes your repo look professional and easy for others (or future you) to understand.
-Since your project seems to be a **Next.js frontend (Delta Labs)** with **Login/Signup modals**, here’s a clean, structured example README you can use:
+
 
 ---
 
