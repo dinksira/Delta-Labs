@@ -1,9 +1,5 @@
 
 
----
-
-### 📝 **README.md**
-
 ```markdown
 # 🌐 Delta Labs Frontend
 
