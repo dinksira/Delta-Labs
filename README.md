@@ -104,10 +104,5 @@ You’re free to use, modify, and distribute this project with attribution.
 **Delta Labs** — UI/UX Design & Development
 Made with ❤️ using Next.js and Tailwind
 
-```
-
----
-
-Would you like me to include **badges** (like `npm`, `Next.js`, `build passing`, etc.) at the top of the README too?  
 It gives a nice “open-source” polish 👌
 ```
