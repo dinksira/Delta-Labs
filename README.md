@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Delta Labs
+
+This project is a platform for learning and collaboration.
+
+## Features
+- Left Sidebar with sticky Contact Us text
+- Login & Signup modals
 
 ## Getting Started
 
@@ -8,11 +14,6 @@ First, run the development server:
 npm run dev
 # or
 yarn dev
-```
-
-Then open your browser at [http://localhost:3000](http://localhost:3000) 🚀
-
----
 
 ## 🧠 How the Modals Work
 
@@ -42,11 +43,3 @@ You’re free to use, modify, and distribute this project with attribution.
 
 **Delta Labs** — UI/UX Design & Development
 Made with ❤️ using Next.js and Tailwind
-
-```
-
----
-
-Would you like me to include **badges** (like `npm`, `Next.js`, `build passing`, etc.) at the top of the README too?  
-It gives a nice “open-source” polish 👌
-```
