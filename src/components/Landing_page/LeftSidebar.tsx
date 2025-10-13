@@ -1,14 +1,87 @@
-// src/components/Landing_page/LeftSidebar.tsx
+'use client';
+
+import React from 'react';
+
+const features = [
+  'Course',
+  'Planner',
+  'Certification',
+  'Chatroom',
+  'Tutorials',
+  'Post',
+  'R & D',
+  'Online Competition',
+  'Specialization',
+  'Digital Library',
+  'Course Support',
+  'Rent a Lab',
+  'Help and Support',
+  'Course',
+  'Planner',
+  'Certification',
+  'Chatroom',
+  'Tutorials',
+  'Post',
+  'R & D',
+  'Online Competition',
+  'Specialization',
+  'Digital Library',
+  'Course Support',
+  'Rent a Lab',
+  'Help and Support',
+];
+
 export default function LeftSidebar() {
   return (
-    <aside className="w-64 bg-gray-50 border-r p-4 flex flex-col space-y-3 min-h-screen">
-      <nav className="flex flex-col space-y-2">
-        <a href="#" className="px-3 py-2 rounded hover:bg-gray-200 transition">Home</a>
-        <a href="#" className="px-3 py-2 rounded hover:bg-gray-200 transition">Courses</a>
-        <a href="#" className="px-3 py-2 rounded hover:bg-gray-200 transition">Labs</a>
-        <a href="#" className="px-3 py-2 rounded hover:bg-gray-200 transition">Community</a>
-        <a href="#" className="px-3 py-2 rounded hover:bg-gray-200 transition">Resources</a>
-      </nav>
+    <aside
+      className="
+        w-80
+        bg-[#F9F9F9] 
+        p-4 
+        h-screen 
+        overflow-y-auto 
+        scrollbar-thin 
+        scrollbar-thumb-[#174A5F] 
+        scrollbar-track-[#E5E5E5]
+      "
+    >
+      {/* Title */}
+      <h2
+        className="mb-4"
+        style={{
+          color: '#174A5F',
+          fontFamily: 'Poppins',
+          fontWeight: 500,
+          fontSize: '16px',
+        }}
+      >
+        Platform Features
+      </h2>
+
+      {/* Buttons Container */}
+      <div className="flex flex-wrap gap-2">
+        {features.map((feature, index) => (
+          <button
+            key={`${feature}-${index}`} // 👈 unique key
+            className="
+              border 
+              border-[#174A5F] 
+              text-[#174A5F] 
+              bg-white 
+              rounded-[30px] 
+              px-5 
+              py-2 
+              text-sm
+              transition 
+              hover:bg-[#174A5F] 
+              hover:text-white
+            "
+            style={{ fontFamily: 'Poppins', fontWeight: 500 }}
+          >
+            {feature}
+          </button>
+        ))}
+      </div>
     </aside>
   );
 }
