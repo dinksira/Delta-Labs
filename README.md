@@ -1,69 +1,8 @@
-Nice ✅ — having a good **README** makes your repo look professional and easy for others (or future you) to understand.
-Since your project seems to be a **Next.js frontend (Delta Labs)** with **Login/Signup modals**, here’s a clean, structured example README you can use:
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
----
+## Getting Started
 
-### 📝 **README.md**
-
-```markdown
-# 🌐 Delta Labs Frontend
-
-This is the **Delta Labs** frontend built with [Next.js](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/).  
-It includes a responsive landing page, authentication modals (Login / Sign Up), and a clean UI powered by Tailwind CSS.
-
----
-
-## 🚀 Features
-
-- ⚡ **Next.js + TypeScript** for performance and type safety  
-- 🧭 **Landing Page UI** with TopBar and reusable components  
-- 🔐 **Login & Sign Up Modals** with smooth transitions between them  
-- 🌍 **Social Sign-In Icons** (Google, Apple, GitHub, Facebook)  
-- 🧱 **Tailwind CSS** for a modern, responsive design  
-- 🧰 Easy to extend and maintain modular structure
-
----
-
-## 🧭 Project Structure
-
-```
-
-src/
-├── components/
-│   └── Landing_page/
-│       ├── TopBar.tsx
-│       ├── SignupButton.tsx
-│       ├── LoginModal.tsx
-│       ├── SignUpModal.tsx
-│       └── AuthModalManager.tsx
-public/
-├── google.svg
-├── apple.svg
-├── facebook.svg
-└── git-hub-logo.svg
-
-````
-
----
-
-## 🛠️ Installation & Setup
-
-Clone the repository:
-
-```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
-````
-
-Install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-```
-
-Run the development server:
+First, run the development server:
 
 ```bash
 npm run dev
