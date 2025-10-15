@@ -9,7 +9,3 @@ This project is a platform for learning and collaboration.
 ## Getting Started
 
 First, run the development server:
-
-```bash
-npm run dev
-# or
