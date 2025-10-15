@@ -7,5 +7,3 @@ This project is a platform for learning and collaboration.
 - Login & Signup modals
 
 ## Getting Started
-
-First, run the development server:
