@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
-import { Heart, MessageCircle, Share2 } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Heart, MessageCircle, Share2, Play, Pause } from 'lucide-react';
 
 type VideoData = {
   id: string;
@@ -12,7 +12,6 @@ type VideoData = {
   shares: number;
 };
 
-// 👇 Replace these filenames with the actual ones you have in /public/videos
 const videos: VideoData[] = [
   {
     id: '1',
@@ -42,6 +41,7 @@ const videos: VideoData[] = [
 
 export default function ShortVideoFeed() {
   const videoRefs = useRef<HTMLVideoElement[]>([]);
+  const [iconState, setIconState] = useState<{ [key: number]: 'play' | 'pause' | null }>({});
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -71,6 +71,23 @@ export default function ShortVideoFeed() {
     };
   }, []);
 
+  const handleVideoClick = (video: HTMLVideoElement, index: number) => {
+    if (video.paused) {
+      video.play().catch(() => {});
+      showIcon(index, 'play');
+    } else {
+      video.pause();
+      showIcon(index, 'pause');
+    }
+  };
+
+  const showIcon = (index: number, type: 'play' | 'pause') => {
+    setIconState((prev) => ({ ...prev, [index]: type }));
+    setTimeout(() => {
+      setIconState((prev) => ({ ...prev, [index]: null }));
+    }, 1000);
+  };
+
   return (
     <div
       className="
@@ -96,8 +113,20 @@ export default function ShortVideoFeed() {
               loop
               muted
               playsInline
-              className="w-full h-full object-cover"
+              onClick={(e) => handleVideoClick(e.currentTarget, index)}
+              className="w-full h-full object-cover cursor-pointer"
             />
+
+            {/* Play/Pause Overlay Icon */}
+            {iconState[index] && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-300">
+                {iconState[index] === 'play' ? (
+                  <Play size={60} className="text-white opacity-90" />
+                ) : (
+                  <Pause size={60} className="text-white opacity-90" />
+                )}
+              </div>
+            )}
 
             {/* Caption */}
             <div className="absolute bottom-4 left-4 right-16 text-white z-10">
